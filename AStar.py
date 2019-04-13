@@ -44,7 +44,7 @@ def a_star(start, goal, draw_queue):
         current = frontier[0]  # Get node with least cost
 
         # add to draw queue
-        current._type = CURRENT
+        current.set_type(STEP)
         draw_queue.append(current)
 
         if current == goal:
@@ -56,7 +56,7 @@ def a_star(start, goal, draw_queue):
         closed.append(current)
 
         for neighbor in current.neighbors:
-            if neighbor.is_obstacle():  # Blocked node
+            if neighbor.get_type() == OBSTACLE:  # Blocked node
                 closed.append(neighbor)
                 continue
 
@@ -70,5 +70,5 @@ def a_star(start, goal, draw_queue):
             if neighbor not in frontier:
                 bisect.insort(frontier, neighbor)  # Adds node in frontier list (Ascending order)
 
-    return list()  # return empty list if a path was not found
+    return None  # return None if a path was not found
 

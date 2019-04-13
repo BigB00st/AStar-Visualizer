@@ -32,6 +32,9 @@ class Maze:
             for y in range(MAZE_HEIGHT):
                 self.maze[x][y].draw(screen)
 
+    def is_start_or_end(self, p):
+        return p == self.end or p == self.start
+
 
 def create_maze(width, height):
     maze = []

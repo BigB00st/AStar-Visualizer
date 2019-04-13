@@ -1,6 +1,7 @@
 from constants import *
 import pygame
 
+
 class Point:
     def __init__(self, x, y, _type=BLANK):
         self.loc = (x, y)
@@ -10,8 +11,11 @@ class Point:
         self.estimated_cost = 0
         self.parent = None
 
-    def is_obstacle(self):
-        return self._type == OBSTACLE
+    def get_type(self):
+        return self._type
+
+    def set_type(self, val):
+        self._type = val
 
     def get_x(self):
         return self.loc[0]
